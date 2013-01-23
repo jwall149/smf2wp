@@ -197,8 +197,9 @@ function smf_authenticateUser()
 			$ID_MEMBER = 0;
 		mysql_free_result($request);
 	}	
-
-
+	// The smf_groups can be used to check which user-groups the user belongs on the SMF side
+	// it's very handy if you want to hide some information from wp-template etc.
+    $smf_user_info['smf_groups'] = array_merge(array($smf_user_info['id_group'], $smf_user_info['id_post_group']), explode(',', $smf_user_info['additional_groups']));
 /*	if (empty($ID_MEMBER))
 		$smf_user_info = array('groups' => array(-1));
 	else
